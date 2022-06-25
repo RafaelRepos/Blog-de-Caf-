@@ -1,0 +1,67 @@
+<!--            MEJORAMIENTO DEL PERFORMANCE            -->
+
+<!-- loading="lazy"
+    loading="lazy" carga paulatinamente los recursos a medida que el usuario va requiriendo. Mejora el rendimiento del servidor... en el caso de videos o paginas con muchas imagenes ayuda bastante
+-->
+
+<!--PRELOAD:ejemplo
+
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+        
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preload" href="img/blog1.jpg" as="image">
+
+    sirve en caso contrario a loading="lazy" cargar lo antes posible determinado recurso y tenerlo listo antes de que el usuario haga el requerimiento
+-->
+
+<!--
+    PREFETCH: carga la siguiente pagina que esperamos que el usuario visite para que su experiencia de usuario sea mejor y mas rápida
+    ejemplo: en el head...
+
+    <link rel="prefetch" href="nosotros.html" as="document">
+
+    la página a aplicarle el prefetch depende de cada caso, depende de lo que ofrezca la página. Tampoco tendría sentido poner prefetch a todas las páginas
+
+______________________________________________________________________________________________-->
+
+
+<!--    MEJORAMIENTO DEL PERFORMANCE CON IMAGENES: CON <picture> WEBP           -->
+<!--
+    <article class="entrada">
+        <div class="entrada__imagen">
+            <picture>
+                <source loading="lazy" srcset="img/blog1.webp" type="image/webp">  ************
+                <img loading="lazy" src="img/blog1.jpg" alt="imagen blog">
+            </picture>    
+        </div>
+
+        <div class="entrada__contenido">
+            <h4 class="no-margin">Tipos de Grano de Café</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, cupiditate. Sint, doloribus perferendis. Numquam molestias eius reprehenderit ipsa nemo labore, nostrum quibusdam, similique placeat illo, pariatur quis blanditiis ex sit!</p>
+            <a href="entrada.html" class="boton boton-primario">Leer Entrada</a>
+        </div>
+    </article>
+
+    *********: el navegador le dará prioridad a la primera opción "source..=webp" y si no lo soporta pasará a <img>, ya que esta opción permite manejar la misma imagen pero con mejores atributos como el peso.
+_______________________________________________________________________________________--->
+
+
+<!--    MEJORAMIENTO DEL PERFORMANCE CON IMAGENES: CON modernizr WEBP           -->
+
+<!--
+    la imagen del banner la subimos por medio de css, no se puede aplicar <picture>.
+    
+    En ese caso toca mediante un script de javascript que se llama modernizr, y se carga igual que normalize, pero con .js ...
+
+    - se crea una carperta/archivo.js con el nombre modernizr.js
+    - aquí se pega el archivo de modernizr.com -> add your detects -> webp -> build -> copypaste
+    - luego se agrega el script al final del index antes del cierre del body
+    - luego en css se da el codigo para habilitar el webp en imagenes, líneas (62 a 67)
+
+-->
